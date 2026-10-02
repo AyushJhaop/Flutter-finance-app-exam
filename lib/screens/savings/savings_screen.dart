@@ -36,12 +36,13 @@ class SavingsScreen extends StatelessWidget {
         ),
         onPressed: () => _showAddGoalDialog(context),
       ),
-      body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        padding: const EdgeInsets.all(AppSpacing.lg),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+      body: ResponsiveContainer.wide(
+        child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          padding: const EdgeInsets.all(AppSpacing.lg),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
             // ─── Hero Summary Card ──────────────────────────────────────────
             Container(
               padding: const EdgeInsets.all(AppSpacing.xl),
@@ -166,7 +167,8 @@ class SavingsScreen extends StatelessWidget {
           ],
         ),
       ),
-    );
+    ),
+  );
   }
 
   void _showAddGoalDialog(BuildContext context) {

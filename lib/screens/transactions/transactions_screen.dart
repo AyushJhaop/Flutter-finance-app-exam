@@ -60,9 +60,10 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
         ),
         onPressed: () => _showAddTransaction(context),
       ),
-      body: Column(
-        children: [
-          // ─── Search Bar ──────────────────────────────────────────────────
+      body: ResponsiveContainer.wide(
+        child: Column(
+          children: [
+            // ─── Search Bar ──────────────────────────────────────────────────
           Padding(
             padding: const EdgeInsets.fromLTRB(
               AppSpacing.lg,
@@ -206,7 +207,8 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
           ),
         ],
       ),
-    );
+    ),
+  );
   }
 
   void _showAddTransaction(BuildContext context) {

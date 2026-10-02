@@ -30,12 +30,13 @@ class _PremiumScreenState extends State<PremiumScreen> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        padding: const EdgeInsets.all(AppSpacing.lg),
-        child: Column(
-          children: [
-            // Gold gradient hero
+      body: ResponsiveContainer.wide(
+        child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          padding: const EdgeInsets.all(AppSpacing.lg),
+          child: Column(
+            children: [
+              // Gold gradient hero
             Container(
               width: double.infinity,
               padding: const EdgeInsets.all(AppSpacing.xl),
@@ -145,7 +146,8 @@ class _PremiumScreenState extends State<PremiumScreen> {
           ],
         ),
       ),
-    );
+    ),
+  );
   }
 
   Widget _pricingCard(int index, String name, String price, String period,

@@ -15,7 +15,7 @@ class AppTheme {
         primary: AppColors.primary,
         primaryContainer: AppColors.primaryLight,
         secondary: AppColors.accent,
-        secondaryContainer: Color(0xFFDBEAFE),
+        secondaryContainer: AppColors.accentSubtle,
         surface: AppColors.bgCard,
         error: AppColors.error,
         onPrimary: AppColors.textInverse,

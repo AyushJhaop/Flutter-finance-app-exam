@@ -74,19 +74,21 @@ class _SignupScreenState extends State<SignupScreen> {
       body: Stack(
         children: [
           SafeArea(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.all(AppSpacing.pagePadding),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Create Account', style: AppTypography.displayMedium),
-                  const SizedBox(height: AppSpacing.sm),
-                  Text(
-                    'Join FinTrack and take control of your finances',
-                    style: AppTypography.bodyLarge.copyWith(
-                      color: AppColors.textSecondary,
-                    ),
-                  ),
+            child: Center(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.all(AppSpacing.pagePadding),
+                child: ResponsiveContainer.auth(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Create Account', style: AppTypography.displayMedium),
+                      const SizedBox(height: AppSpacing.sm),
+                      Text(
+                        'Join FinTrack and take control of your finances',
+                        style: AppTypography.bodyLarge.copyWith(
+                          color: AppColors.textSecondary,
+                        ),
+                      ),
 
                   const SizedBox(height: AppSpacing.xxxl),
 
@@ -205,11 +207,13 @@ class _SignupScreenState extends State<SignupScreen> {
               ),
             ),
           ),
-
-          if (authProvider.isLoading)
-            const LoadingOverlay(message: 'Creating your account...'),
-        ],
+        ),
       ),
-    );
+
+      if (authProvider.isLoading)
+        const LoadingOverlay(message: 'Creating your account...'),
+    ],
+  ),
+);
   }
 }

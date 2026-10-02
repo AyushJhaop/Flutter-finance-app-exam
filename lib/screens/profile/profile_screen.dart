@@ -24,10 +24,11 @@ class ProfileScreen extends StatelessWidget {
       ),
       body: user == null
           ? const EmptyState(icon: Icons.person, title: 'Not logged in')
-          : SingleChildScrollView(
-              padding: const EdgeInsets.all(AppSpacing.pagePadding),
-              child: Column(
-                children: [
+          : ResponsiveContainer(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.all(AppSpacing.pagePadding),
+                child: Column(
+                  children: [
                   // Avatar
                   Center(
                     child: Column(
@@ -183,6 +184,7 @@ class ProfileScreen extends StatelessWidget {
                 ],
               ),
             ),
+          ),
     );
   }
 }

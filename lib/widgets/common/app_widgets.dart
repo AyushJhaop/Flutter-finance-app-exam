@@ -3,6 +3,7 @@ import '../../core/constants/constants.dart';
 
 export 'app_button.dart';
 export 'app_text_field.dart';
+export '../../core/utils/responsive.dart';
 
 /// AppSnackbar — standardized app notifications
 class AppSnackbar {
@@ -19,7 +20,7 @@ class AppSnackbar {
             fontWeight: FontWeight.w600,
           ),
         ),
-        backgroundColor: const Color(0xFF0F766E),
+        backgroundColor: AppColors.primary,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         duration: const Duration(seconds: 3),

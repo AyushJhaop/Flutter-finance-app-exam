@@ -96,33 +96,35 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
 
           SafeArea(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.all(AppSpacing.pagePadding),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: AppSpacing.xxxl),
-
-                  // Logo + brand
-                  Row(
+            child: Center(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.all(AppSpacing.pagePadding),
+                child: ResponsiveContainer.auth(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                        width: 44,
-                        height: 44,
-                        decoration: BoxDecoration(
-                          gradient: AppColors.primaryGradient,
-                          borderRadius: BorderRadius.circular(AppRadius.md),
-                        ),
-                        child: const Icon(
-                          Icons.account_balance_wallet_rounded,
-                          color: Colors.white,
-                          size: 22,
-                        ),
+                      const SizedBox(height: AppSpacing.lg),
+
+                      // Logo + brand
+                      Row(
+                        children: [
+                          Container(
+                            width: 44,
+                            height: 44,
+                            decoration: BoxDecoration(
+                              gradient: AppColors.primaryGradient,
+                              borderRadius: BorderRadius.circular(AppRadius.md),
+                            ),
+                            child: const Icon(
+                              Icons.account_balance_wallet_rounded,
+                              color: Colors.white,
+                              size: 22,
+                            ),
+                          ),
+                          const SizedBox(width: AppSpacing.md),
+                          Text(AppConstants.appName, style: AppTypography.headlineMedium),
+                        ],
                       ),
-                      const SizedBox(width: AppSpacing.md),
-                      Text(AppConstants.appName, style: AppTypography.headlineMedium),
-                    ],
-                  ),
 
                   const SizedBox(height: AppSpacing.xxxl),
 
@@ -289,12 +291,14 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
           ),
-
-          // Loading overlay
-          if (authProvider.isLoading)
-            const LoadingOverlay(message: 'Signing you in...'),
-        ],
+        ),
       ),
-    );
+
+      // Loading overlay
+      if (authProvider.isLoading)
+        const LoadingOverlay(message: 'Signing you in...'),
+    ],
+  ),
+);
   }
 }

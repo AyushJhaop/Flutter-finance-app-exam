@@ -33,7 +33,8 @@ class NotificationsScreen extends StatelessWidget {
             ),
         ],
       ),
-      body: items.isEmpty
+      body: ResponsiveContainer.wide(
+        child: items.isEmpty
           ? const EmptyState(
               icon: Icons.notifications_none_rounded,
               title: 'No Notifications',
@@ -122,6 +123,7 @@ class NotificationsScreen extends StatelessWidget {
                 );
               },
             ),
+      ),
     );
   }
 }

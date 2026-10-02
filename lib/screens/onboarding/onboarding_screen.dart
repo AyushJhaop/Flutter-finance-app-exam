@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import '../../core/constants/constants.dart';
 import '../../core/routing/app_router.dart';
+import '../../core/utils/responsive.dart';
 import '../../services/storage_service.dart';
 
 /// Onboarding data model
@@ -87,24 +88,25 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     return Scaffold(
       backgroundColor: AppColors.bgDark,
       body: SafeArea(
-        child: Column(
-          children: [
-            // Skip button
-            Align(
-              alignment: Alignment.topRight,
-              child: Padding(
-                padding: const EdgeInsets.all(AppSpacing.lg),
-                child: TextButton(
-                  onPressed: _finish,
-                  child: Text(
-                    'Skip',
-                    style: AppTypography.labelLarge.copyWith(
-                      color: AppColors.textSecondary,
+        child: ResponsiveContainer(
+          child: Column(
+            children: [
+              // Skip button
+              Align(
+                alignment: Alignment.topRight,
+                child: Padding(
+                  padding: const EdgeInsets.all(AppSpacing.lg),
+                  child: TextButton(
+                    onPressed: _finish,
+                    child: Text(
+                      'Skip',
+                      style: AppTypography.labelLarge.copyWith(
+                        color: AppColors.textSecondary,
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
 
             // Pages
             Expanded(
@@ -168,7 +170,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           ],
         ),
       ),
-    );
+    ),
+  );
   }
 }
 

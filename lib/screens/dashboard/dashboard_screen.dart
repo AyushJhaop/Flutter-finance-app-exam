@@ -21,18 +21,19 @@ class DashboardScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.bgDark,
       body: SafeArea(
-        child: RefreshIndicator(
-          color: AppColors.primary,
-          backgroundColor: AppColors.bgCard,
-          onRefresh: () async {
-            await finance.refresh();
-            await aiInsights.generateInsights();
-          },
-          child: CustomScrollView(
-            physics: const AlwaysScrollableScrollPhysics(
-              parent: BouncingScrollPhysics(),
-            ),
-            slivers: [
+        child: ResponsiveContainer.wide(
+          child: RefreshIndicator(
+            color: AppColors.primary,
+            backgroundColor: AppColors.bgCard,
+            onRefresh: () async {
+              await finance.refresh();
+              await aiInsights.generateInsights();
+            },
+            child: CustomScrollView(
+              physics: const AlwaysScrollableScrollPhysics(
+                parent: BouncingScrollPhysics(),
+              ),
+              slivers: [
               // ─── Header App Bar ──────────────────────────────────────────
               SliverToBoxAdapter(
                 child: Padding(
@@ -50,7 +51,7 @@ class DashboardScreen extends StatelessWidget {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           gradient: const LinearGradient(
-                            colors: [AppColors.primary, Color(0xFF1E40AF)],
+                            colors: [AppColors.primary, AppColors.primaryDark],
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
                           ),
@@ -339,7 +340,8 @@ class DashboardScreen extends StatelessWidget {
           ),
         ),
       ),
-    );
+    ),
+  );
   }
 
   static void _showAddTransactionSheet(BuildContext context) {
@@ -561,7 +563,7 @@ class _QuickActionBar extends StatelessWidget {
           child: _QuickActionButton(
             icon: Icons.account_balance_rounded,
             label: 'Accounts',
-            accent: const Color(0xFF3B82F6),
+            accent: AppColors.accentLight,
             onTap: () => context.push('/main/accounts'),
           ),
         ),
@@ -570,7 +572,7 @@ class _QuickActionBar extends StatelessWidget {
           child: _QuickActionButton(
             icon: Icons.pie_chart_outline_rounded,
             label: 'Budgets',
-            accent: const Color(0xFFF59E0B),
+            accent: AppColors.warning,
             onTap: () => context.push('/main/budgets'),
           ),
         ),
@@ -579,7 +581,7 @@ class _QuickActionBar extends StatelessWidget {
           child: _QuickActionButton(
             icon: Icons.assignment_outlined,
             label: 'Report',
-            accent: const Color(0xFF8B5CF6),
+            accent: const Color(0xFF7C3AED),
             onTap: () => context.push('/main/report'),
           ),
         ),

@@ -29,13 +29,14 @@ class _SecurityScreenState extends State<SecurityScreen> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        padding: const EdgeInsets.all(AppSpacing.lg),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Status shield banner
+      body: ResponsiveContainer.wide(
+        child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          padding: const EdgeInsets.all(AppSpacing.lg),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Status shield banner
             Container(
               padding: const EdgeInsets.all(AppSpacing.lg),
               decoration: BoxDecoration(
@@ -186,7 +187,8 @@ class _SecurityScreenState extends State<SecurityScreen> {
           ],
         ),
       ),
-    );
+    ),
+  );
   }
 
   Widget _auditRow(String key, String val, Color color) {

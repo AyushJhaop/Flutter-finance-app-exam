@@ -55,6 +55,71 @@ class MainShell extends StatelessWidget {
   Widget build(BuildContext context) {
     final location = GoRouterState.of(context).matchedLocation;
     final currentIndex = _currentIndex(location);
+    final isWide = MediaQuery.sizeOf(context).width >= 768;
+
+    if (isWide) {
+      return Scaffold(
+        body: Row(
+          children: [
+            NavigationRail(
+              backgroundColor: AppColors.bgCard,
+              selectedIndex: currentIndex,
+              labelType: NavigationRailLabelType.all,
+              leading: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 20),
+                child: Container(
+                  width: 44,
+                  height: 44,
+                  decoration: BoxDecoration(
+                    gradient: AppColors.primaryGradient,
+                    borderRadius: BorderRadius.circular(AppRadius.md),
+                  ),
+                  child: const Icon(
+                    Icons.account_balance_wallet_rounded,
+                    color: Colors.white,
+                    size: 22,
+                  ),
+                ),
+              ),
+              selectedIconTheme: const IconThemeData(
+                color: AppColors.primary,
+                size: 24,
+              ),
+              unselectedIconTheme: const IconThemeData(
+                color: AppColors.textMuted,
+                size: 24,
+              ),
+              selectedLabelTextStyle: AppTypography.labelSmall.copyWith(
+                color: AppColors.primary,
+                fontWeight: FontWeight.bold,
+              ),
+              unselectedLabelTextStyle: AppTypography.labelSmall.copyWith(
+                color: AppColors.textSecondary,
+              ),
+              indicatorColor: AppColors.primaryLight,
+              onDestinationSelected: (index) {
+                context.go(_navItems[index].route);
+              },
+              destinations: _navItems
+                  .map(
+                    (item) => NavigationRailDestination(
+                      icon: Icon(item.icon),
+                      selectedIcon: Icon(item.activeIcon),
+                      label: Text(item.label),
+                    ),
+                  )
+                  .toList(),
+            ),
+            const VerticalDivider(
+              thickness: 1,
+              width: 1,
+              color: AppColors.borderSubtle,
+            ),
+            Expanded(child: child),
+          ],
+        ),
+      );
+    }
 
     return Scaffold(
       body: child,
