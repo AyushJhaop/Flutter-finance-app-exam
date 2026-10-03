@@ -182,45 +182,48 @@ class _OnboardingPageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.pagePadding),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          // Icon container
-          Container(
-            width: 120,
-            height: 120,
-            decoration: BoxDecoration(
-              color: page.color.withValues(alpha: 0.12),
-              borderRadius: BorderRadius.circular(AppRadius.xxl),
-              border: Border.all(
-                color: page.color.withValues(alpha: 0.3),
-                width: 1.5,
+    return Center(
+      child: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        padding: const EdgeInsets.symmetric(horizontal: AppSpacing.pagePadding),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // Icon container
+            Container(
+              width: 110,
+              height: 110,
+              decoration: BoxDecoration(
+                color: page.color.withValues(alpha: 0.12),
+                borderRadius: BorderRadius.circular(AppRadius.xxl),
+                border: Border.all(
+                  color: page.color.withValues(alpha: 0.3),
+                  width: 1.5,
+                ),
               ),
+              child: Icon(page.icon, size: 52, color: page.color),
             ),
-            child: Icon(page.icon, size: 56, color: page.color),
-          ),
 
-          const SizedBox(height: AppSpacing.xxxl),
+            const SizedBox(height: AppSpacing.xxl),
 
-          Text(
-            page.title,
-            style: AppTypography.headlineLarge,
-            textAlign: TextAlign.center,
-          ),
-
-          const SizedBox(height: AppSpacing.lg),
-
-          Text(
-            page.subtitle,
-            style: AppTypography.bodyLarge.copyWith(
-              color: AppColors.textSecondary,
-              height: 1.6,
+            Text(
+              page.title,
+              style: AppTypography.headlineLarge,
+              textAlign: TextAlign.center,
             ),
-            textAlign: TextAlign.center,
-          ),
-        ],
+
+            const SizedBox(height: AppSpacing.md),
+
+            Text(
+              page.subtitle,
+              style: AppTypography.bodyLarge.copyWith(
+                color: AppColors.textSecondary,
+                height: 1.5,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
       ),
     );
   }
